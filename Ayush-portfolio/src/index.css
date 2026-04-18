@@ -38,6 +38,26 @@ body {
   background: var(--bg-body);
   color: var(--text-primary);
   transition: background-color 0.35s ease, color 0.35s ease;
+  scrollbar-color: rgb(var(--accent-rgb)) var(--bg-section-alt);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-section-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgb(var(--accent-rgb)), #ec4899);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-section-alt);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c3aed, #db2777);
 }
 
 @theme {

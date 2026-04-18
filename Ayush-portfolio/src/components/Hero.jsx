@@ -56,7 +56,7 @@ const Hero = () => {
       className="hero-shell min-h-screen flex items-center pt-28 sm:pt-32 md:pt-20 pb-16"
     >
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-        <div className="md:w-1/2 mb-10 md:mb-0">
+        <div className="mt-8 sm:mt-10 md:mt-0 md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Hi, I am
             <span className="text-purple"> Ayush Kumar Mishra</span>
