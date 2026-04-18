@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --bg-body: #f4ede1;
+  --bg-section: #fbf7f0;
+  --bg-section-alt: #efe4d2;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: #fffdf9;
+  --text-primary: #1f2937;
+  --text-secondary: #5f6470;
+  --border-soft: rgba(162, 129, 97, 0.24);
+  --nav-bg: rgba(251, 247, 240, 0.82);
+  --input-bg: rgba(255, 255, 255, 0.88);
+  --accent-rgb: 139, 92, 246;
+}
+
+body.theme-dark {
+  --bg-body: #151617;
+  --bg-section: #1d1f22;
+  --bg-section-alt: #24272c;
+  --surface: rgba(36, 39, 44, 0.9);
+  --surface-strong: #2c3036;
+  --text-primary: #f5efe6;
+  --text-secondary: #c4b8a7;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(21, 22, 23, 0.82);
+  --input-bg: rgba(28, 31, 35, 0.9);
+  --accent-rgb: 167, 139, 250;
+}
+
+* {
+  font-family: "Saira", sans-serif;
+}
+
+body {
+  background: var(--bg-body);
+  color: var(--text-primary);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+@theme {
+  --color-dark-100: #151617;
+  --color-dark-200: #1d1f22;
+  --color-dark-300: #24272c;
+  --color-dark-400: #32363d;
+  --color-purple: #8b5cf6;
+  --color-pink: #ec4899;
+  --color-blue: #3883f6;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+.hero-shell {
+  background:
+    radial-gradient(circle at top left, rgba(var(--accent-rgb), 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(24, 130, 120, 0.14), transparent 26%),
+    linear-gradient(135deg, var(--bg-section), var(--bg-section-alt));
+}
+
+.section-primary {
+  background: var(--bg-section);
+}
+
+.section-secondary {
+  background: var(--bg-section-alt);
+}
+
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 14px 38px rgba(76, 58, 130, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.nav-shell {
+  background: var(--nav-bg);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-soft);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+}
+
+.theme-toggle,
+.icon-button,
+.chip,
+.input-surface,
+.btn-secondary {
+  border: 1px solid var(--border-soft);
+}
+
+.theme-toggle,
+.icon-button {
+  background: var(--surface-strong);
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover,
+.icon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(var(--accent-rgb), 0.22);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 1), rgba(236, 72, 153, 0.95));
+  color: #fff8f3;
+  box-shadow: 0 14px 26px rgba(var(--accent-rgb), 0.25);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.chip {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--text-primary);
+}
+
+.input-surface {
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.input-surface::placeholder {
+  color: var(--text-secondary);
+}
+
+.input-surface:focus {
+  border-color: rgba(var(--accent-rgb), 0.45);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.12);
+}
+
+.mobile-menu {
+  background: var(--surface-strong);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+}
+
+.project-glow-card {
+  position: relative;
+}
+
+.project-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  background: radial-gradient(circle at top, rgba(var(--accent-rgb), 0.26), transparent 38%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.project-glow-card:hover::before {
+  opacity: 1;
+}
+
+.typewriter-dynamic {
+  display: inline-block;
+  border-right: 0.15em solid rgb(var(--accent-rgb));
+  white-space: nowrap;
+  padding-right: 0.15em;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(var(--accent-rgb));
+  }
+}
