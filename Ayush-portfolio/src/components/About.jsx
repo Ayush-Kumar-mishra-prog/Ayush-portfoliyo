@@ -1,11 +1,11 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 
 import { aboutInfo, assets } from '../assets/assets'
 
 const About = () => {
   return (
-    <motion.div
+    <Motion.div
     initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -21,17 +21,17 @@ const About = () => {
             </h2>
 
             <div className="flex flex-col md:flex-row items-center gap-12">
-               <div className="md-w-1/2 rounded-2xl overflow-hidden">
-               <motion.img 
+               <div className="md:w-1/2 image-glow-frame rounded-2xl overflow-hidden">
+               <Motion.img 
                initial={{opacity:0,y:50}}
                whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
       viewport={{ once: false, amount:0.2 }}
-      className='object-cover w-full h-full md:w-160'
+      className='object-cover w-full h-full md:w-160 transition duration-700 hover:scale-105'
                src={assets.SecondProfileImg} alt="" />
                </div>
 
-               <motion.div
+               <Motion.div
                initial={{opacity:0,y:50}}
                whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
@@ -49,23 +49,28 @@ const About = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {
                             aboutInfo.map((data,index)=>(
-  <div key={index} className="surface-card rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+  <Motion.div
+    key={index}
+    whileHover={{ y: -10, scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 260, damping: 18 }}
+    className="surface-card reveal-card rounded-2xl p-6 cursor-pointer"
+  >
     <div className="text-purple font-bold text-4xl mb-4">
         <data.icon />
     </div>
     <h3 className="text-xl font-semibold mb-3">{data.title}</h3>
     <p className="text-secondary">{data.description}</p>
-  </div>
+  </Motion.div>
                             ))
                         }
                     </div>
                 </div>
 
-               </motion.div>
+               </Motion.div>
             </div>
         </div>
 
-     </motion.div>
+     </Motion.div>
   )
 }
 

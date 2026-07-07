@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import React from 'react'
 import { projects } from '../assets/assets'
 import ProjectCard from './ProjectCard'
@@ -28,7 +28,7 @@ const Projects = () => {
   }
 
   return (
-    <motion.div
+    <Motion.div
       initial="hidden"
       whileInView="visible"
       variants={sectionVariants}
@@ -37,31 +37,31 @@ const Projects = () => {
       className='section-primary block py-20 scroll-mt-24'
     >
 <div className="container mx-auto px-4 sm:px-6">
-    <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-4">My 
+    <Motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-4">My 
         <span className="text-purple">Projects</span>
-    </motion.h2>
-    <motion.p variants={itemVariants} className="text-secondary text-center max-w-2xl mx-auto mb-6">A collection of my recent work</motion.p>
+    </Motion.h2>
+    <Motion.p variants={itemVariants} className="text-secondary text-center max-w-2xl mx-auto mb-6">A collection of my recent work</Motion.p>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
         {
             projects.map((project,index)=>(
-          <motion.div key={index} variants={itemVariants}>
+          <Motion.div key={index} variants={itemVariants}>
             <ProjectCard {...project} />
-          </motion.div>
+          </Motion.div>
             ))
         }
     </div>
 
-    <motion.div variants={itemVariants} className="text-center mt-12">
-        <a href="#" className="btn-secondary inline-flex items-center px-6 py-3 rounded-lg font-medium transiton duration-300">
+    <Motion.div variants={itemVariants} className="text-center mt-12">
+        <a href="#" className="btn-secondary inline-flex items-center px-6 py-3 rounded-lg font-medium transition duration-300">
             <span className="">View More Projects</span>
                 <ArrowRight className='ml-2' />
             
         </a>
-    </motion.div>
+    </Motion.div>
 </div>
 
-    </motion.div>
+    </Motion.div>
 
   )
 }

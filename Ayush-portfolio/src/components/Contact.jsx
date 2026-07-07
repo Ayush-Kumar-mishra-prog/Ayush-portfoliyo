@@ -1,10 +1,42 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion as Motion } from 'framer-motion'
 import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 
 const Contact = () => {
+  const [formStatus, setFormStatus] = useState('idle')
+  const contactEmail = 'ayushrajmishra960@gmail.com'
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setFormStatus('sending')
+
+    const formData = new FormData(event.currentTarget)
+    formData.append('_subject', 'New portfolio contact message')
+    formData.append('_template', 'table')
+    formData.append('_captcha', 'false')
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error('Message could not be sent')
+      }
+
+      event.currentTarget.reset()
+      setFormStatus('success')
+    } catch {
+      setFormStatus('error')
+    }
+  }
+
   return (
-    <motion.div
+    <Motion.div
     initial={{opacity:0,y:50}}
                whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
@@ -20,27 +52,39 @@ const Contact = () => {
             <p className="text-secondary text-center max-w-2xl mx-auto  mb-16">Have a project in mind or want to collabrate ? Let's talk</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div className="surface-card rounded-3xl p-6 md:p-8">
-                    <form action="" className="sapce-y-6">
+                <Motion.div whileHover={{ y: -6 }} className="surface-card rounded-3xl p-6 md:p-8">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="">
                             <label htmlFor="name" className='block mb-2'>Your Name</label>
-                            <input type="text" className="input-surface w-full mb-6 rounded-lg px-4 py-3 outline-none" />
+                            <input id="name" name="name" type="text" className="input-surface w-full mb-6 rounded-lg px-4 py-3 outline-none" required />
                         </div>
                         <div className="">
-                            <label htmlFor="email" className='block mb-2'>Email Address</label>
-                            <input type="email" className="input-surface w-full mb-6 rounded-lg px-4 py-3 outline-none" placeholder='email@example.com' />
+                            <label htmlFor="email" className='block mb-2'>Your Email Address</label>
+                            <input id="email" name="email" type="email" className="input-surface w-full mb-6 rounded-lg px-4 py-3 outline-none" placeholder='email@example.com' required />
                         </div>
 
                          <div className="">
                             <label htmlFor="message" className='block mb-2'>Your Message</label>
-                            <textarea type="text" className="input-surface w-full h-40 rounded-lg px-4 py-3 outline-none mb-6" placeholder='Your message' />
+                            <textarea id="message" name="message" className="input-surface w-full h-40 rounded-lg px-4 py-3 outline-none mb-6 resize-none" placeholder='Your message' required />
                         </div>
 
-                        <button type='submit' className="btn-primary w-full px-6 py-3 rounded-lg font-medium transition duration-300 cursor-pointer">Send</button>
-                    </form>
-                </div>
+                        <button
+                            type='submit'
+                            disabled={formStatus === 'sending'}
+                            className="btn-primary w-full px-6 py-3 rounded-lg font-medium transition duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
+                        >
+                            {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
+                        </button>
 
-                <div className="surface-card sapce-y-8 rounded-3xl p-6 md:p-8">
+                        {formStatus === 'success' && (
+                            <p className="text-sm text-emerald-300">Message sent successfully. I will receive it by email.</p>
+                        )}
+
+                        
+                    </form>
+                </Motion.div>
+
+                <Motion.div whileHover={{ y: -6 }} className="surface-card space-y-8 rounded-3xl p-6 md:p-8">
                     <div className="flex items-start">
                         <div className="text-purple text-2xl mr-4">
                             <FaMapMarkerAlt />
@@ -57,7 +101,7 @@ const Contact = () => {
                         </div>
                         <div className="">
                             <h3 className="text-lg font-semibold mb-2">Email</h3>
-                            <p className="text-secondary">ayushraj960@gmail.com</p>
+                            <p className="text-secondary">{contactEmail}</p>
                         </div>
                     </div>
 
@@ -91,10 +135,10 @@ const Contact = () => {
                             </a>
                         </div>
                     </div>
-                </div>
+                </Motion.div>
             </div>
         </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 

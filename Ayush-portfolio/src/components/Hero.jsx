@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { easeInOut, motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
+import { easeInOut, motion as Motion } from "framer-motion";
 
 import { assets } from "../assets/assets";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
-  const roles = [
+  const roles = useMemo(() => [
     "Full Stack Devloper",
     "Backend Devloper",
     "Frontend Devloper",
-    "Mobile App Devloper",
-    
-  ];
+    "MERN Stack  Devloper"
+  ], []);
 
   const [displayText, setDisplayText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
@@ -47,54 +46,66 @@ const Hero = () => {
   }, [displayText, isDeleting, roleIndex, roles]);
 
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
       id="home"
       className="hero-shell min-h-screen flex items-center pt-28 sm:pt-32 md:pt-20 pb-16"
     >
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-        <div className="mt-8 sm:mt-10 md:mt-0 md:w-1/2 mb-10 md:mb-0">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+        <Motion.div
+          initial={{ opacity: 0, x: -36 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
+          className="mt-8 sm:mt-10 md:mt-0 md:w-1/2 mb-10 md:mb-0"
+        >
+          <p className="inline-flex items-center gap-2 chip rounded-full px-4 py-2 text-sm mb-5">
+            Available for projects
+          </p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
             Hi, I am
             <span className="text-purple"> Ayush Kumar Mishra</span>
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold mb-6 min-h-[3rem] md:min-h-[3.5rem]">
             <span className="typewriter-dynamic">{displayText}</span>
           </h2>
-          <p className="text-lg text-secondary mb-8">
+          <p className="text-lg text-secondary mb-8 max-w-xl">
             I can create stunning web experience with morden technoliges and
             innovations designs
           </p>
 
-          <div className="flex space-x-4">
-            <a href="https://github.com/Ayush-Kumar-mishra-prog" className="btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transiton duration-300">
+          <div className="flex flex-wrap gap-4">
+            <a href="https://github.com/Ayush-Kumar-mishra-prog" className="btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition duration-300">
                      <FaGithub className='mr-2' />   <span className="">Github</span>
                             
                         
                     </a>
          
 
-            <a href="www.linkedin.com/in/ayush-kumar-mishra-47bb24362" className="btn-secondary inline-flex items-center px-6 py-3 rounded-lg font-medium transiton duration-300">
+            <a href="https://www.linkedin.com/in/ayush-kumar-mishra-47bb24362" className="btn-secondary inline-flex items-center px-6 py-3 rounded-lg font-medium transition duration-300">
                      <FaLinkedin className='mr-2' />   <span className="">Linkedin</span>
                             
                         
                     </a>
           </div>
-        </div>
+        </Motion.div>
 
         {/* Right side content */}
 
-        <div className="md-w-1/2 flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple to-pink opacity-70 blur-2xl"></div>
-            <div className="absolute bg-purple-400 inset-2 rounded-full border border-[var(--border-soft)]"></div>
-              <motion.img
-                animate={{ y: [0, -20, 0] }}
+        <Motion.div
+          initial={{ opacity: 0, scale: 0.9, x: 36 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:w-1/2 flex justify-center"
+        >
+          <div className="image-glow-frame relative w-64 h-64 md:w-80 md:h-80">
+            <div className="absolute bg-purple-400/70 inset-2 rounded-full border border-[var(--border-soft)]"></div>
+              <Motion.img
+                animate={{ y: [0, -20, 0], rotate: [0, 1.5, 0, -1.5, 0] }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   repeatType: "loop",
                   ease: easeInOut,
@@ -104,9 +115,9 @@ const Hero = () => {
                 alt="profile_image"
               />
           </div>
-        </div>
+        </Motion.div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

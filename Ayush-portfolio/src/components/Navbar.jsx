@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { MenuIcon, Moon, Sun, X } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 
-const Navbar = ({ isDarkMode, onToggleTheme }) => {
+const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const navLinks = [
@@ -35,25 +35,9 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
             </a>
           ))}
 
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="theme-toggle cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
         </div>
 
         <div className="md:hidden flex items-center gap-3">
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="theme-toggle cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
           {showMenu ? (
             <X
               onClick={() => setShowMenu(!showMenu)}

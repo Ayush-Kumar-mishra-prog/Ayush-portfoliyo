@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import React from 'react'
 
 const Footer = () => {
   return (
-    <motion.div
+    <Motion.div
     initial={{opacity:0,y:50}}
                whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
@@ -14,7 +14,7 @@ const Footer = () => {
         <p className="text-secondary ">@ 2026 Created by Ayush kumar misrha.All rights reserver </p>
     </div>
   </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 
