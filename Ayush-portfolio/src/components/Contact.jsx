@@ -128,7 +128,7 @@ const Contact = () => {
                                 <FaFacebook />
                             </a>
 
-                             <a href="www.linkedin.com/in/ayush-kumar-mishra-47bb24362" className=" w-12 h-12 rounded-full flex items-center justify-center text-purple bg-black hover:bg-purple hover:text-white transition duration-300">
+                             <a href="https://www.linkedin.com/in/ayush-kumar-mishra-47bb24362/" className=" w-12 h-12 rounded-full flex items-center justify-center text-purple bg-black hover:bg-purple hover:text-white transition duration-300">
                                 <FaLinkedin />
                             </a>
 
