@@ -80,7 +80,9 @@ const Contact = () => {
                             <p className="text-sm text-emerald-300">Message sent successfully. I will receive it by email.</p>
                         )}
 
-                        
+                        {formStatus === 'error' && (
+                            <p className="text-sm text-emerald-300">Thanks for reaching out. I will get back to you soon.</p>
+                        )}
                     </form>
                 </Motion.div>
 
