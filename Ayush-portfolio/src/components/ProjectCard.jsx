@@ -10,7 +10,7 @@ const ProjectCard = ({ title, description, image, tech,code,demo }) => {
       transition={{ type: "spring", stiffness: 260, damping: 18 }}
       className='project-glow-card group surface-card rounded-2xl overflow-hidden cursor-pointer'
     >
-        <img src={image} alt={title} className="w-full h-60 object-cover transition duration-500 group-hover:scale-105" />
+        <img src={image} alt={title} className="w-full h-60 object-contain transition duration-500 group-hover:scale-105" />
 
         <div className="p-6">
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
