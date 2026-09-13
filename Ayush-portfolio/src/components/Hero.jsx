@@ -6,10 +6,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
   const roles = useMemo(() => [
-    "Full Stack Devloper",
-    "Backend Devloper",
-    "Frontend Devloper",
-    "MERN Stack  Devloper"
+    "Full Stack Developer",
+    "Backend Developer",
+    "Frontend Developer",
+    "MERN Stack  Developer"
   ], []);
 
   const [displayText, setDisplayText] = useState("");
